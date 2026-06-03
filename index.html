@@ -1,0 +1,524 @@
+<!DOCTYPE html><html class="light" lang="ko" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>연주쌤 디지털 교실</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Atkinson+Hyperlegible+Next:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#f4b6c1",
+                        "background": "#f8f9fa",
+                        "outline": "#71787f",
+                        "primary": "#1c648e",
+                        "on-tertiary-fixed-variant": "#005316",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#90cdfd",
+                        "on-secondary-fixed": "#330f19",
+                        "surface": "#f8f9fa",
+                        "on-secondary-container": "#7a4a54",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c0c7cf",
+                        "primary-fixed": "#cae6ff",
+                        "on-primary-fixed-variant": "#004b70",
+                        "tertiary": "#006e20",
+                        "on-surface-variant": "#41484e",
+                        "primary-container": "#7cb9e8",
+                        "inverse-surface": "#2e3132",
+                        "tertiary-fixed-dim": "#77dc7a",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#663a43",
+                        "on-tertiary-container": "#005115",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary": "#81515a",
+                        "surface-container-low": "#f3f4f5",
+                        "tertiary-fixed": "#93f993",
+                        "on-background": "#191c1d",
+                        "on-surface": "#191c1d",
+                        "on-primary-container": "#00496d",
+                        "inverse-on-surface": "#f0f1f2",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#1c648e",
+                        "surface-container": "#edeeef",
+                        "surface-dim": "#d9dadb",
+                        "surface-bright": "#f8f9fa",
+                        "tertiary-container": "#64c868",
+                        "surface-container-high": "#e7e8e9",
+                        "on-tertiary-fixed": "#002105",
+                        "secondary-fixed": "#ffd9df",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#90cdfd",
+                        "on-primary-fixed": "#001e30",
+                        "surface-variant": "#e1e3e4",
+                        "secondary-container": "#fdbec9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding": "32px",
+                        "section-gap-desktop": "120px",
+                        "gutter": "24px",
+                        "section-gap-mobile": "64px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Atkinson Hyperlegible Next"],
+                        "body-xl": ["Atkinson Hyperlegible Next"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "label-lg": ["18px", { "lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["20px", { "lineHeight": "30px", "fontWeight": "400" }],
+                        "body-xl": ["24px", { "lineHeight": "36px", "fontWeight": "400" }],
+                        "headline-lg": ["36px", { "lineHeight": "44px", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .soft-shadow {
+            box-shadow: 0 10px 30px -5px rgba(28, 100, 142, 0.05);
+        }
+        .bg-pattern {
+            background-image: radial-gradient(var(--tw-colors-primary-container) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.5, 0, 0, 1) forwards;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-lg antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Header (TopAppBar) -->
+<header class="dark:bg-surface-dim shadow-sm backdrop-blur-md sticky top-0 z-50 w-full transition-all duration-300" id="top-nav" style="background-color: rgb(252, 228, 236);">
+<div class="flex justify-between items-center w-full px-container-padding max-w-[1200px] mx-auto h-[90px] md:h-[110px]">
+<a class="hover:opacity-80 transition-opacity flex items-center flex-shrink-0" href="#"><img alt="연주쌤 디지털 교실" class="object-contain w-[180px] md:w-[220px] lg:w-[250px] h-auto mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYJRPuOYrO6WTR7t3jTlZtycgGtRxh_bw9FjRnMRX15yopP0DzlnOXdF4EHTu9d2g2C912PgD0TGQ7hVcPNyFw0UkPMfx5M6hov-cF5SpXEBvZJlumNvb1VHLg29b73TA0ZIVg1yfuByCWzStblS6t-rrwT5lYWtMgSFH6FDgIJgl3e0Cqn6PYCk9rZmIofykhP43tEK2IigCb5GQhIE3dFI3Dih-O65gsgCsWi4bm9BQfGqkqUPSYqRizuAPRVH-DeORuvsiCqWM"></a>
+<nav class="hidden md:flex items-center space-x-3 lg:space-x-5 xl:space-x-6 overflow-x-auto no-scrollbar pb-1 md:pb-0">
+<a class="text-black font-sans font-medium hover:text-primary transition-colors duration-200 text-sm xl:text-base whitespace-nowrap" href="profile.html" target="_blank">강사소개</a>
+<a class="text-black font-sans font-medium hover:text-primary transition-colors duration-200 text-sm xl:text-base whitespace-nowrap" href="#curriculum">교육과정</a>
+<a class="text-black font-sans font-medium hover:text-primary transition-colors duration-200 text-sm xl:text-base whitespace-nowrap" href="#features">수업특징</a>
+<a class="text-black font-sans font-medium hover:text-primary transition-colors duration-200 text-sm xl:text-base whitespace-nowrap" href="#contact">문의하기</a>
+<a class="text-black font-sans font-medium hover:text-primary transition-colors duration-200 text-sm xl:text-base whitespace-nowrap" href="https://www.youtube.com/@comitedu" target="_blank" rel="noopener noreferrer">유튜브배우기</a>
+<a class="text-black font-sans font-medium hover:text-primary transition-colors duration-200 text-sm xl:text-base whitespace-nowrap" href="https://brain-health.vercel.app/" target="_blank" rel="noopener noreferrer">치매예방</a>
+<a class="text-black font-sans font-medium hover:text-primary transition-colors duration-200 text-sm xl:text-base whitespace-nowrap" href="https://mbti-psi-sable.vercel.app/" target="_blank" rel="noopener noreferrer">심리테스트(MBTI)</a>
+</nav>
+<div class="flex items-center ml-4 flex-shrink-0">
+<a class="hidden md:inline-flex items-center justify-center h-10 lg:h-12 px-4 lg:px-6 rounded-full bg-primary text-on-primary text-sm lg:text-base font-medium hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 shadow-sm active:scale-95 whitespace-nowrap" href="#" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">
+                    시작하기
+                </a>
+<button aria-label="메뉴 열기" class="md:hidden p-2 text-primary hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="pt-16 pb-section-gap-mobile md:py-section-gap-desktop px-container-padding overflow-hidden bg-white" id="about">
+<div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+<div class="flex flex-col items-start space-y-8 animate-fade-in-up">
+<div class="inline-flex items-center space-x-2 bg-primary-fixed/50 text-on-primary-fixed-variant px-4 py-2 rounded-full text-label-lg font-label-lg">
+<span class="material-symbols-outlined text-xl">school</span>
+<span class="">누구나 쉽게 배우는 디지털</span>
+</div>
+<h1 class="text-display-lg font-display-lg text-on-surface leading-tight">
+                        스마트폰부터 AI까지,<br>
+<span class="text-primary relative inline-block">
+                            쉽고 따뜻하게
+                            <svg class="absolute w-full h-3 -bottom-1 left-0 text-secondary-fixed-dim opacity-50" preserveAspectRatio="none" viewBox="0 0 100 10"><path d="M0 5 Q 50 10 100 5" fill="transparent" stroke="currentColor" stroke-width="8"></path></svg>
+</span><br>알려드립니다
+                    </h1>
+<p class="text-body-xl font-body-xl text-on-surface-variant max-w-lg leading-relaxed">
+                        초보자도 괜찮습니다.<br>
+                        연주쌤과 함께하면 디지털 세상이 쉬워집니다.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-4">
+<a class="inline-flex items-center justify-center h-[60px] px-8 rounded-full bg-secondary text-on-secondary text-label-lg font-label-lg hover:bg-secondary/90 hover:shadow-xl hover:-translate-y-1 hover:scale-105 transition-all duration-300" href="#contact">
+                            강의 문의하기
+                            <span class="material-symbols-outlined ml-2">arrow_forward</span>
+</a>
+<a class="inline-flex items-center justify-center h-[60px] px-8 rounded-full border-2 border-primary text-primary bg-transparent text-label-lg font-label-lg hover:bg-primary-fixed hover:text-on-primary-fixed hover:shadow-lg hover:-translate-y-1 hover:scale-105 transition-all duration-300" href="#curriculum">
+                            수업 과정 보기
+                        </a>
+</div>
+</div>
+<div class="relative h-[500px] md:h-[600px] flex justify-center items-end animate-fade-in-up" style="animation-delay: 200ms; opacity: 0; animation-fill-mode: forwards;">
+<!-- Decorative background shapes -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-secondary-fixed-dim/30 rounded-full blur-3xl -z-10"></div>
+<div class="absolute top-1/4 right-1/4 w-32 h-32 bg-primary-fixed-dim/40 rounded-full blur-2xl -z-10"></div>
+<!-- Floating Icons -->
+<div class="absolute top-10 left-10 p-3 bg-surface rounded-xl shadow-lg animate-bounce" style="animation-duration: 3s;">
+<span class="material-symbols-outlined text-primary text-3xl">smart_toy</span>
+</div>
+<div class="absolute top-1/4 right-5 p-3 bg-surface rounded-xl shadow-lg animate-bounce" style="animation-duration: 4s; animation-delay: 1s;">
+<span class="material-symbols-outlined text-secondary text-3xl">smartphone</span>
+</div>
+<div class="absolute bottom-1/4 left-5 p-3 bg-surface rounded-xl shadow-lg animate-bounce" style="animation-duration: 3.5s; animation-delay: 0.5s;">
+<span class="material-symbols-outlined text-tertiary text-3xl">laptop_mac</span>
+</div>
+<img alt="Instructor smiling" class="h-full w-auto object-contain object-bottom relative z-10 drop-shadow-2xl rounded-full animate-float" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3-2IocJhQ0i4w_K2JW0n28yVFzxUiY2K7_KpTla0X4xAbkZY60mHizoHkLqIh7XdQYjiT7SC9Hhctf4Y3GMV6CQllulIv7HSa9kb2Qs8VK2R5iTsds3v3aijp6hOwoOXJH2S_JC218yMLoh03bEnitlKI7SWQeHo9IzCOIPLqT1V8W6BEDXHgBd1KPQEorl9pBE_gCLNpWM6a0eS_kH6pkPs4T8nhu64rN_PxTg2-fxmVjA2lezLHx2lCCA7z1vBg-jwSjfA6bIU">
+</div>
+</div>
+</section>
+<!-- Education Fields Section -->
+<section class="py-section-gap-mobile md:py-section-gap-desktop px-container-padding bg-surface-container-lowest" id="curriculum">
+<div class="max-w-[1200px] mx-auto">
+<div class="text-center mb-16 reveal active">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-4">무엇을 배울 수 있나요?</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant">기초부터 활용까지, 필요한 모든 것을 알려드립니다</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<a href="https://blog.naver.com/PostList.naver?blogId=smartyeonjusam&from=postList&categoryNo=27" target="_blank" rel="noopener noreferrer" class="bg-surface p-8 rounded-xl soft-shadow border border-outline-variant/30 hover:-translate-y-3 hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center group cursor-pointer reveal delay-100 active block">
+<div class="w-20 h-20 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl" data-weight="fill">smartphone</span>
+</div>
+<h3 class="text-on-surface mb-3 text-2xl font-bold">스마트폰 기초 교육</h3>
+<p class="text-body-lg font-body-lg text-on-surface-variant">전화, 문자, 카카오톡 등<br>필수 앱 활용법</p>
+</a>
+<!-- Card 2 -->
+<a href="https://blog.naver.com/PostList.naver?blogId=smartyeonjusam&from=postList&categoryNo=73" target="_blank" rel="noopener noreferrer" class="bg-surface p-8 rounded-xl soft-shadow border border-outline-variant/30 hover:-translate-y-3 hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center group cursor-pointer reveal delay-200 active block">
+<div class="w-20 h-20 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl" data-weight="fill">smart_toy</span>
+</div>
+<h3 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-3">AI 활용 교육</h3>
+<p class="text-body-lg font-body-lg text-on-surface-variant">챗GPT 대화하기,<br>AI 이미지 생성하기,<br>프롬프트기초/활용</p>
+</a>
+<!-- Card 3 -->
+<a href="https://blog.naver.com/PostList.naver?blogId=smartyeonjusam&from=postList&categoryNo=74&parentCategoryNo=74" target="_blank" rel="noopener noreferrer" class="bg-surface p-8 rounded-xl soft-shadow border border-outline-variant/30 hover:-translate-y-3 hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center group cursor-pointer reveal delay-300 active block">
+<div class="w-20 h-20 bg-tertiary-container text-on-tertiary-container rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl" data-weight="fill">computer</span>
+</div>
+<h3 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-3">컴퓨터 기초 교육</h3>
+<p class="text-body-lg font-body-lg text-on-surface-variant">윈도우 기본 조작,<br>한글 문서 작성,<br>엑셀기초배우기</p>
+</a>
+<!-- Card 4 -->
+<a href="https://blog.naver.com/PostList.naver?blogId=smartyeonjusam&from=postList&categoryNo=38&parentCategoryNo=38" target="_blank" rel="noopener noreferrer" class="bg-surface p-8 rounded-xl soft-shadow border border-outline-variant/30 hover:-translate-y-3 hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col items-center text-center group cursor-pointer reveal delay-400 active block">
+<div class="w-20 h-20 bg-error-container text-on-error-container rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl" data-weight="fill">edit_square</span>
+</div>
+<h3 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-3">ITQ자격증</h3>
+<p class="text-body-lg font-body-lg text-on-surface-variant">한글, 엑셀,<br>파워포인트, 인터넷</p>
+</a>
+</div>
+</div>
+</section>
+<!-- Recommendation Section -->
+<section class="py-section-gap-mobile md:py-section-gap-desktop px-container-padding bg-primary-fixed/20">
+<div class="max-w-[1000px] mx-auto bg-surface rounded-xl soft-shadow p-8 md:p-16 border border-outline-variant/20 relative overflow-hidden reveal active">
+<!-- Decorative Icon -->
+<div class="absolute -right-10 -top-10 opacity-5">
+<span class="material-symbols-outlined text-[200px]">check_circle</span>
+</div>
+<div class="mb-10 inline-block">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-2">이런 분께 추천합니다</h2>
+<div class="w-full h-1 bg-tertiary rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
+<div class="flex items-center space-x-3 reveal delay-100 active">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary text-2xl" data-weight="fill">check_circle</span>
+</div>
+<p class="text-sm sm:text-base lg:text-lg font-body-xl text-on-surface whitespace-nowrap tracking-tighter">스마트폰 사용이 아직 어려우신 분</p>
+</div>
+<div class="flex items-center space-x-3 reveal delay-100 active">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary text-2xl" data-weight="fill">check_circle</span>
+</div>
+<p class="text-sm sm:text-base lg:text-lg font-body-xl text-on-surface whitespace-nowrap tracking-tighter">카카오톡과 사진 정리를 배우고 싶은 분</p>
+</div>
+<div class="flex items-center space-x-3 reveal delay-200 active">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary text-2xl" data-weight="fill">check_circle</span>
+</div>
+<p class="text-sm sm:text-base lg:text-lg font-body-xl text-on-surface whitespace-nowrap tracking-tighter">챗GPT와 AI를 처음 시작하는 분</p>
+</div>
+<div class="flex items-center space-x-3 reveal delay-200 active">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary text-2xl" data-weight="fill">check_circle</span>
+</div>
+<p class="text-sm sm:text-base lg:text-lg font-body-xl text-on-surface whitespace-nowrap tracking-tighter">블로그나 SNS 콘텐츠를 만들고 싶은 분</p>
+</div>
+<div class="flex items-center space-x-3 reveal delay-300 active">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary text-2xl" data-weight="fill">check_circle</span>
+</div>
+<p class="text-sm sm:text-base lg:text-lg font-body-xl text-on-surface whitespace-nowrap tracking-tighter">컴퓨터 기초부터 차근차근 배우고 싶은 분</p>
+</div>
+<div class="flex items-center space-x-3 reveal delay-300 active">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary text-2xl" data-weight="fill">check_circle</span>
+</div>
+<p class="text-sm sm:text-base lg:text-lg font-body-xl text-on-surface whitespace-nowrap tracking-tighter">부모님이나 시니어 대상 교육이 필요한 기관</p>
+</div>
+<div class="flex items-center space-x-3 md:col-span-2 reveal delay-400 active">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary text-2xl" data-weight="fill">check_circle</span>
+</div>
+<p class="text-sm sm:text-base lg:text-lg font-body-xl text-on-surface font-semibold text-primary whitespace-nowrap tracking-tighter">복지관, 평생교육원, 주민센터 등 디지털 교육이 필요한 곳</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Features Section -->
+<section class="py-section-gap-mobile md:py-section-gap-desktop px-container-padding bg-surface-container-lowest" id="features">
+<div class="max-w-[1200px] mx-auto">
+<div class="text-center mb-16 reveal active">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-4">연주쌤 수업은 이렇게 다릅니다</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant">포기하지 않도록, 끝까지 함께합니다</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Feature 1 -->
+<div class="bg-surface rounded-xl overflow-hidden soft-shadow border border-outline-variant/30 hover:-translate-y-3 hover:scale-105 hover:shadow-2xl transition-all duration-300 group reveal delay-100 active">
+<div class="h-48 bg-secondary-fixed/50 flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 bg-pattern opacity-20"></div>
+<span class="material-symbols-outlined text-[80px] text-secondary group-hover:scale-110 transition-transform duration-500">hearing</span>
+</div>
+<div class="p-8">
+<h3 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-4 text-center">초보자 눈높이 설명</h3>
+<p class="text-body-lg font-body-lg text-on-surface-variant text-center">어려운 전문 용어 대신 일상생활에서 쓰는 쉬운 말로 풀어서 설명해 드립니다.</p>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface rounded-xl overflow-hidden soft-shadow border border-outline-variant/30 hover:-translate-y-3 hover:scale-105 hover:shadow-2xl transition-all duration-300 group reveal delay-200 active">
+<div class="h-48 bg-primary-fixed/50 flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 bg-pattern opacity-20"></div>
+<span class="material-symbols-outlined text-[80px] text-primary group-hover:scale-110 transition-transform duration-500">touch_app</span>
+</div>
+<div class="p-8">
+<h3 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-4 text-center">따라 하기 중심 수업</h3>
+<p class="text-body-lg font-body-lg text-on-surface-variant text-center">눈으로만 보는 것이 아니라, 직접 눌러보고 만들어보는 실습 위주로 진행합니다.</p>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface rounded-xl overflow-hidden soft-shadow border border-outline-variant/30 hover:-translate-y-3 hover:scale-105 hover:shadow-2xl transition-all duration-300 group reveal delay-300 active">
+<div class="h-48 bg-tertiary-fixed/50 flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 bg-pattern opacity-20"></div>
+<span class="material-symbols-outlined text-[80px] text-tertiary group-hover:scale-110 transition-transform duration-500">menu_book</span>
+</div>
+<div class="p-8">
+<h3 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-4 text-center">수업자료 제공</h3>
+<p class="text-body-lg font-body-lg text-on-surface-variant text-center">집에 가서도 혼자 복습할 수 있도록, 큰 글씨로 제작된 맞춤형 교재나 요약본을 드립니다.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Courses Tags Section -->
+<section class="py-section-gap-mobile md:py-section-gap-desktop px-container-padding bg-surface">
+<div class="max-w-[1000px] mx-auto text-center reveal active">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-10">대표 강의 과정</h2>
+<div class="flex flex-wrap justify-center gap-4">
+<span class="px-6 py-3 bg-primary-container text-on-primary-container rounded-full text-label-lg font-label-lg shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 cursor-default"># 스마트폰 기초</span>
+<span class="px-6 py-3 bg-secondary-container text-on-secondary-container rounded-full text-label-lg font-label-lg shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 cursor-default"># 카카오톡 실생활</span>
+<span class="px-6 py-3 bg-tertiary-container text-on-tertiary-container rounded-full text-label-lg font-label-lg shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 cursor-default"># 챗GPT 입문</span>
+<span class="px-6 py-3 bg-error-container text-on-error-container rounded-full text-label-lg font-label-lg shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 cursor-default"># AI 이미지 만들기</span>
+<span class="px-6 py-3 bg-primary-fixed text-on-primary-fixed rounded-full text-label-lg font-label-lg shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 cursor-default"># 블로그 글쓰기</span>
+<span class="px-6 py-3 bg-secondary-fixed text-on-secondary-fixed rounded-full text-label-lg font-label-lg shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 cursor-default"># 컴퓨터 기초</span>
+<span class="px-6 py-3 bg-tertiary-fixed text-on-tertiary-fixed rounded-full text-label-lg font-label-lg shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 cursor-default"># 한글 문서 작성</span>
+<span class="px-6 py-3 bg-surface-variant text-on-surface-variant rounded-full text-label-lg font-label-lg shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 cursor-default border border-outline-variant/50"># 영상 콘텐츠 제작</span>
+</div>
+</div>
+</section>
+<!-- Process Section -->
+<section class="py-section-gap-mobile md:py-section-gap-desktop px-container-padding bg-surface-container-lowest">
+<div class="max-w-[1200px] mx-auto reveal active">
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-16 text-center">수업은 이렇게 진행됩니다</h2>
+<div class="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-12 md:gap-4 before:absolute before:content-[''] before:hidden md:before:block before:h-1 before:w-[80%] before:bg-outline-variant/30 before:top-12 before:left-[10%] before:-z-10">
+<!-- Step 1 -->
+<div class="flex flex-row md:flex-col items-center md:items-center w-full md:w-1/4 gap-6 md:gap-4 relative z-10 bg-surface-container-lowest md:bg-transparent p-4 md:p-0 rounded-xl hover:-translate-y-2 transition-transform duration-300">
+<div class="w-24 h-24 rounded-full bg-surface shadow-md border-4 border-primary flex items-center justify-center flex-shrink-0 transition-transform duration-300 hover:scale-110">
+<span class="text-headline-lg font-headline-lg text-primary font-bold">1</span>
+</div>
+<div class="text-left md:text-center">
+<h4 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-2">상담</h4>
+<p class="text-body-lg font-body-lg text-on-surface-variant">현재 수준과 필요한<br class="hidden md:block">내용을 파악합니다.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-row md:flex-col items-center md:items-center w-full md:w-1/4 gap-6 md:gap-4 relative z-10 bg-surface-container-lowest md:bg-transparent p-4 md:p-0 rounded-xl hover:-translate-y-2 transition-transform duration-300">
+<div class="w-24 h-24 rounded-full bg-surface shadow-md border-4 border-secondary flex items-center justify-center flex-shrink-0 transition-transform duration-300 hover:scale-110">
+<span class="text-headline-lg font-headline-lg text-secondary font-bold">2</span>
+</div>
+<div class="text-left md:text-center">
+<h4 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-2">맞춤 구성</h4>
+<p class="text-body-lg font-body-lg text-on-surface-variant">대상에 딱 맞는<br class="hidden md:block">커리큘럼을 준비합니다.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-row md:flex-col items-center md:items-center w-full md:w-1/4 gap-6 md:gap-4 relative z-10 bg-surface-container-lowest md:bg-transparent p-4 md:p-0 rounded-xl hover:-translate-y-2 transition-transform duration-300">
+<div class="w-24 h-24 rounded-full bg-surface shadow-md border-4 border-tertiary flex items-center justify-center flex-shrink-0 transition-transform duration-300 hover:scale-110">
+<span class="text-headline-lg font-headline-lg text-tertiary font-bold">3</span>
+</div>
+<div class="text-left md:text-center">
+<h4 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-2">실습 수업</h4>
+<p class="text-body-lg font-body-lg text-on-surface-variant">직접 해보며 익히는<br class="hidden md:block">쉬운 수업을 진행합니다.</p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-row md:flex-col items-center md:items-center w-full md:w-1/4 gap-6 md:gap-4 relative z-10 bg-surface-container-lowest md:bg-transparent p-4 md:p-0 rounded-xl hover:-translate-y-2 transition-transform duration-300">
+<div class="w-24 h-24 rounded-full bg-surface shadow-md border-4 border-primary-container flex items-center justify-center flex-shrink-0 transition-transform duration-300 hover:scale-110">
+<span class="text-headline-lg font-headline-lg text-primary-container font-bold">4</span>
+</div>
+<div class="text-left md:text-center">
+<h4 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-2">자료 제공</h4>
+<p class="text-body-lg font-body-lg text-on-surface-variant">복습을 위한 큰 글씨<br class="hidden md:block">자료를 제공합니다.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact CTA Section -->
+<section class="py-section-gap-mobile md:py-section-gap-desktop px-container-padding bg-primary-fixed/30 relative overflow-hidden" id="contact">
+<div class="absolute inset-0 bg-pattern opacity-30 pointer-events-none"></div>
+<div class="max-w-[800px] mx-auto text-center relative z-10 reveal active">
+<span class="material-symbols-outlined text-[64px] text-primary mb-6 animate-bounce" style="animation-duration: 3s;">forum</span>
+<h2 class="text-display-lg font-display-lg text-on-surface mb-6">디지털 교육이 필요하신가요?</h2>
+<p class="text-body-xl font-body-xl text-on-surface-variant mb-12 bg-surface/50 inline-block px-6 py-2 rounded-full backdrop-blur-sm">
+                    기관, 단체, 개인 수업 모두 상담 가능합니다.
+                </p>
+<div class="flex flex-col space-y-4 max-w-md mx-auto">
+<a class="flex items-center justify-center h-[72px] px-8 rounded-xl bg-[#FEE500] text-[#191919] text-body-xl font-body-xl font-bold hover:shadow-2xl hover:-translate-y-2 hover:scale-105 transition-all duration-300" href="http://pf.kakao.com/_DxnsbX" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined mr-3">chat_bubble</span>
+                        카카오톡 문의하기
+                    </a>
+<a class="flex items-center justify-center h-[72px] px-8 rounded-xl bg-[#03C75A] text-white text-body-xl font-body-xl font-bold hover:shadow-2xl hover:-translate-y-2 hover:scale-105 transition-all duration-300" href="https://blog.naver.com/smartyeonjusam" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined mr-3">article</span>
+                        블로그 방문하기
+                    </a>
+<a class="flex items-center justify-center h-[72px] px-8 rounded-xl bg-surface border-2 border-outline-variant text-on-surface text-body-xl font-body-xl font-bold hover:bg-surface-variant hover:shadow-2xl hover:-translate-y-2 hover:scale-105 transition-all duration-300" href="https://mail.google.com/mail/?view=cm&fs=1&to=comit5114@gmail.com" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined mr-3">mail</span>
+                        강의 제안 문의
+                    </a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-high dark:bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-container-padding py-section-gap-mobile md:py-[80px] max-w-[1200px] mx-auto gap-8 text-center md:text-left reveal active">
+<div class="flex flex-col items-center md:items-start space-y-4">
+<span class="text-headline-lg font-headline-lg text-primary font-bold">연주쌤 디지털 교실</span>
+<p class="text-body-lg font-body-lg text-on-surface-variant">AI·스마트폰·컴퓨터 활용 교육 | 조연주 강사</p>
+<p class="text-label-lg font-label-lg text-on-surface-variant opacity-80">초보자도 쉽게 배우는 따뜻한 디지털 교육</p>
+<p class="text-body-lg font-body-lg text-on-surface-variant mt-4">© 2026 연주쌤 디지털 교실. All rights reserved.</p>
+</div>
+<nav class="flex flex-wrap justify-center md:justify-end gap-6">
+<a class="text-on-surface-variant text-label-lg font-label-lg hover:text-secondary hover:scale-105 transition-all duration-300" href="#">이용약관</a>
+<a class="text-on-surface-variant text-label-lg font-label-lg hover:text-secondary hover:scale-105 transition-all duration-300" href="#">개인정보처리방침</a>
+<a class="text-on-surface-variant text-label-lg font-label-lg hover:text-secondary hover:scale-105 transition-all duration-300" href="#">강사소개</a>
+</nav>
+</div>
+</footer>
+<!-- Floating Help Widget (The "Instructor" Widget) -->
+<div class="fixed bottom-6 right-6 z-50">
+<button id="help-widget-btn" onclick="toggleHelpWidget()" aria-label="도움말 열기" class="w-16 h-16 bg-surface rounded-full shadow-2xl overflow-hidden border-2 border-primary hover:scale-110 transition-transform duration-300 flex items-center justify-center p-1">
+<img alt="Instructor Avatar" class="w-full h-full object-cover rounded-full bg-secondary-fixed-dim/20 object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3-2IocJhQ0i4w_K2JW0n28yVFzxUiY2K7_KpTla0X4xAbkZY60mHizoHkLqIh7XdQYjiT7SC9Hhctf4Y3GMV6CQllulIv7HSa9kb2Qs8VK2R5iTsds3v3aijp6hOwoOXJH2S_JC218yMLoh03bEnitlKI7SWQeHo9IzCOIPLqT1V8W6BEDXHgBd1KPQEorl9pBE_gCLNpWM6a0eS_kH6pkPs4T8nhu64rN_PxTg2-fxmVjA2lezLHx2lCCA7z1vBg-jwSjfA6bIU">
+</button>
+<!-- Speech Bubble -->
+<div id="help-widget-bubble" class="absolute bottom-20 right-0 w-48 bg-surface rounded-2xl shadow-xl p-4 border border-outline-variant/20 opacity-0 transition-all duration-300 pointer-events-none origin-bottom-right transform scale-95">
+<div class="text-label-lg font-label-lg text-on-surface mb-2">무엇을 도와드릴까요?</div>
+<a class="block w-full py-2 bg-primary-container text-on-primary-container rounded-lg text-center text-label-lg font-label-lg hover:bg-primary-fixed transition-colors" href="https://open.kakao.com/o/sX9MMDwi" target="_blank" rel="noopener noreferrer">질문하기</a>
+<!-- Bubble tail -->
+<div class="absolute -bottom-2 right-6 w-4 h-4 bg-surface border-b border-r border-outline-variant/20 transform rotate-45"></div>
+</div>
+</div>
+<script>
+function toggleHelpWidget() {
+    const bubble = document.getElementById('help-widget-bubble');
+    if (bubble.classList.contains('opacity-0')) {
+        bubble.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
+        bubble.classList.add('opacity-100', 'pointer-events-auto', 'scale-100');
+    } else {
+        bubble.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+        bubble.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
+    }
+}
+</script>
+<script>
+        // Simple script to handle header background on scroll
+        const header = document.getElementById('top-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+                header.classList.replace('bg-surface/80', 'bg-surface/95');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.replace('bg-surface/95', 'bg-surface/80');
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+
+
+
+</body></html>
