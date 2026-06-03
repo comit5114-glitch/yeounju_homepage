@@ -152,10 +152,29 @@
 <a class="hidden md:inline-flex items-center justify-center h-10 lg:h-12 px-4 lg:px-6 rounded-full bg-primary text-on-primary text-sm lg:text-base font-medium hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 shadow-sm active:scale-95 whitespace-nowrap" href="#" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;">
                     시작하기
                 </a>
-<button aria-label="메뉴 열기" class="md:hidden p-2 text-primary hover:bg-surface-container rounded-full transition-colors">
+<button aria-label="메뉴 열기" class="md:hidden p-2 text-primary hover:bg-surface-container rounded-full transition-colors" onclick="toggleMobileMenu()">
 <span class="material-symbols-outlined text-3xl">menu</span>
 </button>
 </div>
+</div>
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 bg-surface z-[100] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col">
+    <div class="flex justify-between items-center p-6 border-b border-outline-variant/30">
+        <span class="text-xl font-bold text-primary">메뉴</span>
+        <button aria-label="메뉴 닫기" class="p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors" onclick="toggleMobileMenu()">
+            <span class="material-symbols-outlined text-3xl">close</span>
+        </button>
+    </div>
+    <div class="flex flex-col p-6 space-y-6 overflow-y-auto pb-24">
+        <a class="text-on-surface font-sans text-xl font-medium hover:text-primary transition-colors" href="profile.html" target="_blank" onclick="toggleMobileMenu()">강사소개</a>
+        <a class="text-on-surface font-sans text-xl font-medium hover:text-primary transition-colors" href="#curriculum" onclick="toggleMobileMenu()">교육과정</a>
+        <a class="text-on-surface font-sans text-xl font-medium hover:text-primary transition-colors" href="#features" onclick="toggleMobileMenu()">수업특징</a>
+        <a class="text-on-surface font-sans text-xl font-medium hover:text-primary transition-colors" href="#contact" onclick="toggleMobileMenu()">문의하기</a>
+        <a class="text-on-surface font-sans text-xl font-medium hover:text-primary transition-colors" href="https://www.youtube.com/@comitedu" target="_blank" rel="noopener noreferrer" onclick="toggleMobileMenu()">유튜브배우기</a>
+        <a class="text-on-surface font-sans text-xl font-medium hover:text-primary transition-colors" href="https://brain-health.vercel.app/" target="_blank" rel="noopener noreferrer" onclick="toggleMobileMenu()">치매예방</a>
+        <a class="text-on-surface font-sans text-xl font-medium hover:text-primary transition-colors" href="https://mbti-psi-sable.vercel.app/" target="_blank" rel="noopener noreferrer" onclick="toggleMobileMenu()">심리테스트(MBTI)</a>
+        <a class="mt-8 flex items-center justify-center h-14 rounded-full bg-primary text-on-primary text-lg font-medium shadow-md" href="#" onclick="window.scrollTo({top:0, behavior:'smooth'}); toggleMobileMenu(); return false;">시작하기</a>
+    </div>
 </div>
 </header>
 <main>
@@ -167,23 +186,23 @@
 <span class="material-symbols-outlined text-xl">school</span>
 <span class="">누구나 쉽게 배우는 디지털</span>
 </div>
-<h1 class="text-display-lg font-display-lg text-on-surface leading-tight">
+<h1 class="text-headline-lg-mobile md:text-display-lg font-display-lg text-on-surface leading-tight">
                         스마트폰부터 AI까지,<br>
 <span class="text-primary relative inline-block">
                             쉽고 따뜻하게
                             <svg class="absolute w-full h-3 -bottom-1 left-0 text-secondary-fixed-dim opacity-50" preserveAspectRatio="none" viewBox="0 0 100 10"><path d="M0 5 Q 50 10 100 5" fill="transparent" stroke="currentColor" stroke-width="8"></path></svg>
 </span><br>알려드립니다
                     </h1>
-<p class="text-body-xl font-body-xl text-on-surface-variant max-w-lg leading-relaxed">
+<p class="text-body-lg md:text-body-xl font-body-xl text-on-surface-variant max-w-lg leading-relaxed">
                         초보자도 괜찮습니다.<br>
                         연주쌤과 함께하면 디지털 세상이 쉬워집니다.
                     </p>
 <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-4">
-<a class="inline-flex items-center justify-center h-[60px] px-8 rounded-full bg-secondary text-on-secondary text-label-lg font-label-lg hover:bg-secondary/90 hover:shadow-xl hover:-translate-y-1 hover:scale-105 transition-all duration-300" href="#contact">
+<a class="inline-flex items-center justify-center h-[50px] md:h-[60px] px-6 md:px-8 rounded-full bg-secondary text-on-secondary text-base md:text-label-lg font-label-lg hover:bg-secondary/90 hover:shadow-xl hover:-translate-y-1 hover:scale-105 transition-all duration-300" href="#contact">
                             강의 문의하기
                             <span class="material-symbols-outlined ml-2">arrow_forward</span>
 </a>
-<a class="inline-flex items-center justify-center h-[60px] px-8 rounded-full border-2 border-primary text-primary bg-transparent text-label-lg font-label-lg hover:bg-primary-fixed hover:text-on-primary-fixed hover:shadow-lg hover:-translate-y-1 hover:scale-105 transition-all duration-300" href="#curriculum">
+<a class="inline-flex items-center justify-center h-[50px] md:h-[60px] px-6 md:px-8 rounded-full border-2 border-primary text-primary bg-transparent text-base md:text-label-lg font-label-lg hover:bg-primary-fixed hover:text-on-primary-fixed hover:shadow-lg hover:-translate-y-1 hover:scale-105 transition-all duration-300" href="#curriculum">
                             수업 과정 보기
                         </a>
 </div>
@@ -210,7 +229,7 @@
 <section class="py-section-gap-mobile md:py-section-gap-desktop px-container-padding bg-surface-container-lowest" id="curriculum">
 <div class="max-w-[1200px] mx-auto">
 <div class="text-center mb-16 reveal active">
-<h2 class="text-headline-lg font-headline-lg text-on-surface mb-4">무엇을 배울 수 있나요?</h2>
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-on-surface mb-4">무엇을 배울 수 있나요?</h2>
 <p class="text-body-lg font-body-lg text-on-surface-variant">기초부터 활용까지, 필요한 모든 것을 알려드립니다</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -219,7 +238,7 @@
 <div class="w-20 h-20 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined text-4xl" data-weight="fill">smartphone</span>
 </div>
-<h3 class="text-on-surface mb-3 text-2xl font-bold">스마트폰 기초 교육</h3>
+<h3 class="text-xl md:text-2xl font-headline-lg-mobile text-on-surface mb-3 font-bold">스마트폰 기초 교육</h3>
 <p class="text-body-lg font-body-lg text-on-surface-variant">전화, 문자, 카카오톡 등<br>필수 앱 활용법</p>
 </a>
 <!-- Card 2 -->
@@ -227,7 +246,7 @@
 <div class="w-20 h-20 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined text-4xl" data-weight="fill">smart_toy</span>
 </div>
-<h3 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-3">AI 활용 교육</h3>
+<h3 class="text-xl md:text-2xl font-headline-lg-mobile text-on-surface mb-3 font-bold">AI 활용 교육</h3>
 <p class="text-body-lg font-body-lg text-on-surface-variant">챗GPT 대화하기,<br>AI 이미지 생성하기,<br>프롬프트기초/활용</p>
 </a>
 <!-- Card 3 -->
@@ -235,7 +254,7 @@
 <div class="w-20 h-20 bg-tertiary-container text-on-tertiary-container rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined text-4xl" data-weight="fill">computer</span>
 </div>
-<h3 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-3">컴퓨터 기초 교육</h3>
+<h3 class="text-xl md:text-2xl font-headline-lg-mobile text-on-surface mb-3 font-bold">컴퓨터 기초 교육</h3>
 <p class="text-body-lg font-body-lg text-on-surface-variant">윈도우 기본 조작,<br>한글 문서 작성,<br>엑셀기초배우기</p>
 </a>
 <!-- Card 4 -->
@@ -243,7 +262,7 @@
 <div class="w-20 h-20 bg-error-container text-on-error-container rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined text-4xl" data-weight="fill">edit_square</span>
 </div>
-<h3 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-3">ITQ자격증</h3>
+<h3 class="text-xl md:text-2xl font-headline-lg-mobile text-on-surface mb-3 font-bold">ITQ자격증</h3>
 <p class="text-body-lg font-body-lg text-on-surface-variant">한글, 엑셀,<br>파워포인트, 인터넷</p>
 </a>
 </div>
@@ -257,7 +276,7 @@
 <span class="material-symbols-outlined text-[200px]">check_circle</span>
 </div>
 <div class="mb-10 inline-block">
-<h2 class="text-headline-lg font-headline-lg text-on-surface mb-2">이런 분께 추천합니다</h2>
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-on-surface mb-2">이런 분께 추천합니다</h2>
 <div class="w-full h-1 bg-tertiary rounded-full"></div>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
@@ -311,7 +330,7 @@
 <section class="py-section-gap-mobile md:py-section-gap-desktop px-container-padding bg-surface-container-lowest" id="features">
 <div class="max-w-[1200px] mx-auto">
 <div class="text-center mb-16 reveal active">
-<h2 class="text-headline-lg font-headline-lg text-on-surface mb-4">연주쌤 수업은 이렇게 다릅니다</h2>
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-on-surface mb-4">연주쌤 수업은 이렇게 다릅니다</h2>
 <p class="text-body-lg font-body-lg text-on-surface-variant">포기하지 않도록, 끝까지 함께합니다</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -322,7 +341,7 @@
 <span class="material-symbols-outlined text-[80px] text-secondary group-hover:scale-110 transition-transform duration-500">hearing</span>
 </div>
 <div class="p-8">
-<h3 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-4 text-center">초보자 눈높이 설명</h3>
+<h3 class="text-xl md:text-2xl font-headline-lg-mobile text-on-surface mb-4 text-center font-bold">초보자 눈높이 설명</h3>
 <p class="text-body-lg font-body-lg text-on-surface-variant text-center">어려운 전문 용어 대신 일상생활에서 쓰는 쉬운 말로 풀어서 설명해 드립니다.</p>
 </div>
 </div>
@@ -333,7 +352,7 @@
 <span class="material-symbols-outlined text-[80px] text-primary group-hover:scale-110 transition-transform duration-500">touch_app</span>
 </div>
 <div class="p-8">
-<h3 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-4 text-center">따라 하기 중심 수업</h3>
+<h3 class="text-xl md:text-2xl font-headline-lg-mobile text-on-surface mb-4 text-center font-bold">따라 하기 중심 수업</h3>
 <p class="text-body-lg font-body-lg text-on-surface-variant text-center">눈으로만 보는 것이 아니라, 직접 눌러보고 만들어보는 실습 위주로 진행합니다.</p>
 </div>
 </div>
@@ -344,7 +363,7 @@
 <span class="material-symbols-outlined text-[80px] text-tertiary group-hover:scale-110 transition-transform duration-500">menu_book</span>
 </div>
 <div class="p-8">
-<h3 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-4 text-center">수업자료 제공</h3>
+<h3 class="text-xl md:text-2xl font-headline-lg-mobile text-on-surface mb-4 text-center font-bold">수업자료 제공</h3>
 <p class="text-body-lg font-body-lg text-on-surface-variant text-center">집에 가서도 혼자 복습할 수 있도록, 큰 글씨로 제작된 맞춤형 교재나 요약본을 드립니다.</p>
 </div>
 </div>
@@ -354,7 +373,7 @@
 <!-- Courses Tags Section -->
 <section class="py-section-gap-mobile md:py-section-gap-desktop px-container-padding bg-surface">
 <div class="max-w-[1000px] mx-auto text-center reveal active">
-<h2 class="text-headline-lg font-headline-lg text-on-surface mb-10">대표 강의 과정</h2>
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-on-surface mb-10">대표 강의 과정</h2>
 <div class="flex flex-wrap justify-center gap-4">
 <span class="px-6 py-3 bg-primary-container text-on-primary-container rounded-full text-label-lg font-label-lg shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 cursor-default"># 스마트폰 기초</span>
 <span class="px-6 py-3 bg-secondary-container text-on-secondary-container rounded-full text-label-lg font-label-lg shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 cursor-default"># 카카오톡 실생활</span>
@@ -370,7 +389,7 @@
 <!-- Process Section -->
 <section class="py-section-gap-mobile md:py-section-gap-desktop px-container-padding bg-surface-container-lowest">
 <div class="max-w-[1200px] mx-auto reveal active">
-<h2 class="text-headline-lg font-headline-lg text-on-surface mb-16 text-center">수업은 이렇게 진행됩니다</h2>
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-on-surface mb-16 text-center">수업은 이렇게 진행됩니다</h2>
 <div class="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-12 md:gap-4 before:absolute before:content-[''] before:hidden md:before:block before:h-1 before:w-[80%] before:bg-outline-variant/30 before:top-12 before:left-[10%] before:-z-10">
 <!-- Step 1 -->
 <div class="flex flex-row md:flex-col items-center md:items-center w-full md:w-1/4 gap-6 md:gap-4 relative z-10 bg-surface-container-lowest md:bg-transparent p-4 md:p-0 rounded-xl hover:-translate-y-2 transition-transform duration-300">
@@ -420,8 +439,8 @@
 <div class="absolute inset-0 bg-pattern opacity-30 pointer-events-none"></div>
 <div class="max-w-[800px] mx-auto text-center relative z-10 reveal active">
 <span class="material-symbols-outlined text-[64px] text-primary mb-6 animate-bounce" style="animation-duration: 3s;">forum</span>
-<h2 class="text-display-lg font-display-lg text-on-surface mb-6">디지털 교육이 필요하신가요?</h2>
-<p class="text-body-xl font-body-xl text-on-surface-variant mb-12 bg-surface/50 inline-block px-6 py-2 rounded-full backdrop-blur-sm">
+<h2 class="text-3xl md:text-display-lg font-display-lg text-on-surface mb-6">디지털 교육이 필요하신가요?</h2>
+<p class="text-base md:text-body-xl font-body-xl text-on-surface-variant mb-12 bg-surface/50 inline-block px-4 md:px-6 py-2 rounded-full backdrop-blur-sm">
                     기관, 단체, 개인 수업 모두 상담 가능합니다.
                 </p>
 <div class="flex flex-col space-y-4 max-w-md mx-auto">
@@ -479,6 +498,14 @@ function toggleHelpWidget() {
     } else {
         bubble.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
         bubble.classList.remove('opacity-100', 'pointer-events-auto', 'scale-100');
+    }
+}
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    if (menu.classList.contains('translate-x-full')) {
+        menu.classList.remove('translate-x-full');
+    } else {
+        menu.classList.add('translate-x-full');
     }
 }
 </script>
